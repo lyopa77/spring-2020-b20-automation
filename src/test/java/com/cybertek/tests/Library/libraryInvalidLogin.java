@@ -28,12 +28,12 @@ public class libraryInvalidLogin {
         // WebElement password = driver.findElement(By.xpath("//*[@id=\"login-form\"]/div[4]/label"));
         WebElement password = driver.findElement(By.id("inputPassword"));
         WebElement signinButton = driver.findElement(By.cssSelector("#login-form > button"));
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         email.sendKeys("student63@library");
         password.sendKeys("Cybertek");
         Thread.sleep(2000);
         signinButton.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         WebElement ActualInvalidLoginMessage = driver.findElement(By.xpath("//*[@id=\"login-form\"]/div[2]/div"));
         String AIM = ActualInvalidLoginMessage.getText();
         String ExpectedInvalidLoginMessage = "Sorry, Wrong Email or Password";
