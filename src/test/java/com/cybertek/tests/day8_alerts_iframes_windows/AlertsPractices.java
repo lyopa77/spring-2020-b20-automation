@@ -71,7 +71,7 @@ public class AlertsPractices {
         //Assert
         Assert.assertTrue(resultText.isDisplayed(), "Text is not displayed. Verification FAILED!!!");
 
-        //BREAK UNTIL: 2.12PM CST - 3.12PM EST
+        
 
     }
 

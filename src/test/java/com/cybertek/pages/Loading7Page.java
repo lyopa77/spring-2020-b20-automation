@@ -10,10 +10,11 @@ public class Loading7Page {
     public Loading7Page(){
         PageFactory.initElements(Driver.getDriver(), this);
     }
-
-    //Locate "Done!" message
-    @FindBy(id = "alert")
+    @FindBy(id ="alert")
     public WebElement doneMessage;
+    //Locate "Done!" message
+    //@FindBy(id = "alert")
+
 
 
 
