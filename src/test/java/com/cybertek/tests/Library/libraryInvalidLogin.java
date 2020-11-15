@@ -37,7 +37,7 @@ public class libraryInvalidLogin {
         WebElement ActualInvalidLoginMessage = driver.findElement(By.xpath("//*[@id=\"login-form\"]/div[2]/div"));
         String AIM = ActualInvalidLoginMessage.getText();
         String ExpectedInvalidLoginMessage = "Sorry, Wrong Email or Password";
-        Assert.assertEquals(AIM, ExpectedInvalidLoginMessage);
+        Assert.assertEquals(AIM, ExpectedInvalidLoginMessage, "test passed");
         System.out.println("Expected message: " + ExpectedInvalidLoginMessage);
         System.out.println("Actual message: " + AIM);
     }
