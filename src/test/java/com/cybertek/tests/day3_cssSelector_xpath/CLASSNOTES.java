@@ -172,7 +172,7 @@ We covered 6 of 8 Selenium locators previously.
 #7 -> cssSelector:
 	-> cssSelector has its own SYNTAX.
 	-> using cssSelector you will be able to locate pretty much every single web element on the page
-	-> cssSelector has 2 types of syntaxes:
+	-> cssSelector has 2 types of syntax:
 
 	#1- tagName[attribute='value']
 

@@ -1,14 +1,16 @@
 package com.cybertek.tests.day6_dropdown_review_javafaker;
 
 import com.cybertek.utilities.WebDriverFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -107,7 +109,7 @@ public class DropdownTasks {
 
     //TC #4: Selecting value from multiple select dropdown
     @Test
-    public void test4_multiple_value_select_dropdown() throws InterruptedException {
+    public void test4_multiple_value_select_dropdown() throws InterruptedException, IOException {
 
         //3. Select all the options from multiple select dropdown.
         // Locate the dropdown
@@ -120,51 +122,75 @@ public class DropdownTasks {
 
         //Loop through the options to select all of them
 
-        for(WebElement eachOption : allOptions){
+        for (WebElement eachOption : allOptions) {
             Thread.sleep(500);
             eachOption.click(); // this will click each option with every iteration
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].scrollIntoView();", eachOption);
+            Thread.sleep(500);
+            TakesScreenshot ts = ((TakesScreenshot) driver);
+            File file = ts.getScreenshotAs(OutputType.FILE);
+            try {
+                //save the screenshot taken in destination path
+                FileUtils.copyFile(file, new File("src/test/java/com/cybertek/tests/day6_dropdown_review_javafaker/screenshots.jpg"));
+            } catch (IOException e) {
+                e.printStackTrace();}
+                //4. Print out all selected values.
+                System.out.println("Selected: " + eachOption.getText());
 
-            //4. Print out all selected values.
-            System.out.println("Selected: " + eachOption.getText());
+                //Asserting the option is actually selected or not
+                Assert.assertTrue(eachOption.isSelected(), "The option: " + eachOption.getText() + " is not selected!");
 
-            //Asserting the option is actually selected or not
-            Assert.assertTrue(eachOption.isSelected(), "The option: "+eachOption.getText()+" is not selected!");
+            }
 
+            System.out.println("Multiple is true " + multipleSelectDropdown.isMultiple());
+            multipleSelectDropdown.deselectAll();
+            System.out.println(multipleSelectDropdown.isMultiple());
+            //5. Deselect all values.
+            for (WebElement eachOption : allOptions) {
+                //Assert.assertTrue(!eachOption.isSelected()); //it will be false boolean value, with ! we make it "true"
+
+                // assertFalse method looks for "false" boolean value to pass the test.
+                Assert.assertFalse(eachOption.isSelected());
+            }
+
+            //BREAK UNTIL 1.05PM CST - 2.05PM EST
         }
 
-        //5. Deselect all values.
-        multipleSelectDropdown.deselectAll();
+        //TC #5: Selecting value from non-select dropdown
+        @Test
+        public void test5_html_dropdown_handling () {
+            //Locate the HTML dropdown as a regular web element
+            WebElement websiteDropdown = driver.findElement(By.xpath("//*[@data-toggle = 'dropdown']"));
 
-        for(WebElement eachOption : allOptions){
-            //Assert.assertTrue(!eachOption.isSelected()); //it will be false boolean value, with ! we make it "true"
+            //3. Click to non-select dropdown
+            websiteDropdown.click();
+            TakesScreenshot ts = ((TakesScreenshot) driver);
+            File file = ts.getScreenshotAs(OutputType.FILE);
+            try {
+                //save the screenshot taken in destination path
+                FileUtils.copyFile(file, new File("src/test/java/com/cybertek/tests/day6_dropdown_review_javafaker/sc3.jpg"));
+            } catch (IOException e) {
+                e.printStackTrace();}
+            System.out.println("screenshot taken");
 
-            // assertFalse method looks for "false" boolean value to pass the test.
-            Assert.assertFalse(eachOption.isSelected());
+            //4. Select Facebook from dropdown
+            WebElement facebookLink = driver.findElement(By.xpath("//a[.='Facebook']"));
+
+            facebookLink.click();
+
+
+            //5. Verify title is “Facebook - Log In or Sign Up”
+            String actualTitle = driver.getTitle();
+            String expectedTitle = "Facebook - Log In or Sign Up";
+
+            Assert.assertEquals(actualTitle, expectedTitle, "Actual title does not match expected title!");
+            driver.quit();
+        }
+        @AfterClass
+        public void close () {
+            driver.quit();
         }
 
-        //BREAK UNTIL 1.05PM CST - 2.05PM EST
+
     }
-
-    //TC #5: Selecting value from non-select dropdown
-    @Test
-    public void test5_html_dropdown_handling(){
-        //Locate the HTML dropdown as a regular web element
-        WebElement websiteDropdown = driver.findElement(By.xpath("//div[@class='dropdown']/a"));
-
-        //3. Click to non-select dropdown
-        websiteDropdown.click();
-
-        //4. Select Facebook from dropdown
-        WebElement facebookLink = driver.findElement(By.xpath("//a[.='Facebook']"));
-
-        facebookLink.click();
-
-        //5. Verify title is “Facebook - Log In or Sign Up”
-        String actualTitle = driver.getTitle();
-        String expectedTitle = "Facebook - Log In or Sign Up";
-
-        Assert.assertEquals(actualTitle, expectedTitle, "Actual title does not match expected title!");
-    }
-
-
-}

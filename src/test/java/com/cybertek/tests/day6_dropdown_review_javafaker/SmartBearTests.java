@@ -9,6 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -110,6 +111,10 @@ public class SmartBearTests {
         WebElement successMessage = driver.findElement(By.xpath("//strong"));
         Assert.assertTrue(successMessage.isDisplayed(), "Success message is not displayed!");
 
+    }
+    @AfterClass
+    public void close (){
+        driver.quit();
     }
 
 

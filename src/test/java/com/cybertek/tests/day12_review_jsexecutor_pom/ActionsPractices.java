@@ -39,7 +39,6 @@ public class ActionsPractices {
         //4. Assert: Text’s “style” attribute value contains “red”.
         String expected = "red";
         String actual = textToDoubleClick.getAttribute("style"); //color: red;
-
         Assert.assertTrue(actual.contains(expected));
 
     }
@@ -60,7 +59,7 @@ public class ActionsPractices {
         BrowserUtils.wait(3);
 
         Actions actions = new Actions(Driver.getDriver());
-        //DragAndDrop method expects to arguments:
+        //DragAndDrop method expects two arguments:
         // #1-Which webElement you want to drag : SOURCE
         // #2-Where do you want to drop it? : TARGET
         actions.dragAndDrop(smallCircle, bigCircle).perform();
@@ -100,13 +99,13 @@ public class ActionsPractices {
         //actions.dragAndDrop(smallCircle, bigCircle).perform();
 
         //actions.clickAndHold(smallCircle).moveToElement(bigCircle).release().perform();
-        actions.clickAndHold(smallCircle).perform();
+        actions.clickAndHold(smallCircle).moveToElement(bigCircle).release().perform();
         BrowserUtils.wait(3);
 
-        actions.moveToElement(bigCircle).perform();
+       /* actions.moveToElement(bigCircle).perform();
         BrowserUtils.wait(3);
 
-        actions.release().perform();
+        actions.release().perform();*/
 
 
 
@@ -137,9 +136,10 @@ public class ActionsPractices {
 
         //to be able to right click, we need to create actions instance
         Actions actions = new Actions(Driver.getDriver());
-        BrowserUtils.wait(2);
+        BrowserUtils.wait(4);
         //using "context click" method to right click on the box
         actions.contextClick(box).perform();
+        BrowserUtils.wait(2);
 
 
         //3. Alert will open. Switch to alert

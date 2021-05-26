@@ -10,7 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -37,11 +39,11 @@ public class DropdownPractices {
         //Expected
         //We are dynamically getting the current month name from LocalDateTime java class.
         String expectedValue = LocalDateTime.now().getMonth().name();
-        //System.out.println("expectedValue = " + expectedValue);
+        System.out.println("expectedValue = " + expectedValue);
 
         //Actual
         String actualValue = monthDropdown.getFirstSelectedOption().getText();
-        //System.out.println("actualValue = " + actualValue);
+        System.out.println("actualValue = " + actualValue);
 
         //Assert
         //First way of doing this assertion: use .toLowerCase() method for both actual and expected values
@@ -58,7 +60,12 @@ public class DropdownPractices {
         //Creating a list of strings to store months
         List<String> expectedMonthOptions = Arrays.asList("January", "February", "March", "April", "May", "June", "July",
                 "August","September","October", "November", "December");
+        List <String> mtexts = new ArrayList<>();
 
+        for (WebElement each: actualMonthOptions){
+            mtexts.add(each.getText());
+        }
+        System.out.println(mtexts);
 
         //Create a new list of Strings called: actualMonthsTexts , and store the texts of web elements into this new list
 //        List<String> actualMonthsTexts = new ArrayList<>();
@@ -73,7 +80,8 @@ public class DropdownPractices {
         //Passing List into assertions:
         //First it will check the size, then it will check the content
         Assert.assertEquals(BrowserUtils.getElementsText(actualMonthOptions), expectedMonthOptions);
-
+driver.quit();
     }
+
 
 }

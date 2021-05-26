@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 public class P0_FindElements_Practice1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         //TC #0: FINDELEMENTS
         //1. Open Chrome browser
@@ -16,6 +16,7 @@ public class P0_FindElements_Practice1 {
 
         //2. Go to http://practice.cybertekschool.com/forgot_password
         driver.get("http://practice.cybertekschool.com/forgot_password");
+        Thread.sleep(2000);
 
         //3. Print out the texts of all links
         //shortcut to introduce the local variable:
@@ -35,6 +36,7 @@ public class P0_FindElements_Practice1 {
         int numberOfLinks = listOfLinks.size();
 
         System.out.println("numberOfLinks = " + numberOfLinks);
+        driver.close();
 
     }
 }

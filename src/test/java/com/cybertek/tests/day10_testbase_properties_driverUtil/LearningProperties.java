@@ -8,6 +8,7 @@ public class LearningProperties {
     public void java_properties_test(){
         System.out.println("System.getProperty(\"os.name\") = " + System.getProperty("os.name"));
         System.out.println("System.getProperty(\"user.name\") = " + System.getProperty("user.name"));
+        System.out.println("System.getProperty(\"user.name\") = " + System.getProperty("browser"));
 
         //key=value
         //os.name=Mac OS X

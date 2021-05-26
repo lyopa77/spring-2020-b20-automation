@@ -51,12 +51,13 @@ public class AlertsPractices {
     }
 
     @Test
-    public void p2_confirmation_alert_practice(){
+    public void p2_confirmation_alert_practice() throws InterruptedException {
         //Locating the warning/information alert button to click it
         WebElement warningAlertButton = driver.findElement(By.xpath("//button[.='Click for JS Confirm']"));
 
         //click to the button
         warningAlertButton.click();
+        Thread.sleep(2000);
 
         //Create alert instance
         Alert alert = driver.switchTo().alert();

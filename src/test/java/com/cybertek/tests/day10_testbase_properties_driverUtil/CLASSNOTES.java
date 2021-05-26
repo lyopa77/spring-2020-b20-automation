@@ -85,13 +85,6 @@ P.I.Q.
 
 
 ===================================================
-	What is the topic?
-	Why are we learning this topic?
-		- What problem we are solving?
-		- What issue we are addressing?
-		- What are we making easy by learning this topic?
-	How are we using it?
-
 
 PROPERTIES
 
@@ -138,7 +131,7 @@ DATA DRIVEN TESTING:
 	What kind of benefits are there to read from external file:
 	-> We centralize the test data, which is easier to maintain
 		ex: instead of going to 100 different test cases, we switch from 1 file and it is applied to all of our tests.
-	-> It is extremely easier to maintain the code compared to previous version(hardcoding test data in the source code)
+	-> It is  easier to maintain the code compared to previous version(hardcoding test data in the source code)
 
 PROPERTIES FILE
 -> Properties type is just another type of file.

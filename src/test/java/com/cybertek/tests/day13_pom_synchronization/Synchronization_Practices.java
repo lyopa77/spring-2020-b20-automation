@@ -25,7 +25,7 @@ public class Synchronization_Practices {
         //Using WebDriverWait to create explicit wait until title changes
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
 
-        //we need to use the object 'wait' to SETUP OUR EXPECTED CONDITION
+        //we need to use the object 'wait' to SET UP OUR EXPECTED CONDITION
         wait.until(ExpectedConditions.titleIs("Dynamic title"));
         
         //assert that message is displayed

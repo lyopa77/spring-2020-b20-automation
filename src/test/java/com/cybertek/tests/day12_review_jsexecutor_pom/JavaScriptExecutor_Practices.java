@@ -22,7 +22,7 @@ public class JavaScriptExecutor_Practices {
 
         for (int i = 0; i < 10 ; i++) {
             BrowserUtils.wait(1);
-            js.executeScript("window.scrollBy(0, 500)");
+            js.executeScript("window.scrollBy(0, 1000)");
 
         }
 

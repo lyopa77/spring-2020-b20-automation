@@ -44,6 +44,7 @@ public class F2_LoginTitleVerification {
         }else{
             System.out.println("Title verification failed!");
         }
+        driver.quit();
 
     }
 }

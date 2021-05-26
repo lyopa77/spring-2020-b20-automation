@@ -27,7 +27,7 @@ public class ReadingProperties {
         properties.load(file);
 
         // We read from the file
-        System.out.println("properties.getProperty(\"browser\") = " + properties.getProperty("browser"));
+        System.out.println( properties.getProperty("browser"));
         System.out.println("properties.getProperty(\"username\") = " + properties.getProperty("username"));
 
         // Close the file

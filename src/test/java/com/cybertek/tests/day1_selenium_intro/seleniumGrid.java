@@ -3,21 +3,30 @@ package com.cybertek.tests.day1_selenium_intro;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class SeleniumTest {
+import java.net.MalformedURLException;
+import java.net.URL;
 
-    public static void main(String[] args) throws InterruptedException {
+public class seleniumGrid {
+
+    public static void main(String[] args) throws InterruptedException, MalformedURLException {
 
        //1- Setup the driver
         WebDriverManager.chromedriver().setup();
-//        System.setProperty("driver.type","path to the driver");
-//        System.setProperty("webdriver.chrome.driver","path to the driver");
 
        //2- Create instance of the driver
-        WebDriver driver = new ChromeDriver(); //THIS LINE IS OPENING ME BROWSER
+        WebDriver driver = new ChromeDriver(); //THIS LINE IS OPENING the BROWSER
 
+String url = "https://Lyopa:113cd4d5-eacb-4dd1-a169-5c8e73343843@ondemand.us-west-1.saucelabs.com:443/wd/hub";
+        DesiredCapabilities desCab = new DesiredCapabilities();
+        desCab.setBrowserName("safari");
+        desCab.setPlatform(Platform.MAC);
+        driver = new RemoteWebDriver(new URL(url),desCab);
         driver.manage().window().maximize();
 
 

@@ -41,5 +41,7 @@ public class P2_MerriamWebster_Links {
 
         //6. Print out how many total link
         System.out.println("The number of TOTAL links on this page = " + listOfLinks.size());
+        driver.close();
     }
+
 }

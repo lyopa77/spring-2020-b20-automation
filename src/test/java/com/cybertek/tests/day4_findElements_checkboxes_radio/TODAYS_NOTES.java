@@ -172,7 +172,7 @@ How do we use index numbers to select desired web element.
 	//div[@class='container']/div[2] -> this will go to the second child
 	//div[@class='container']/div[3] -> this will go to the third child
 
-If the web elements are not siblings to each other, then we need to put the locator inside of paranthesis, THEN we pass index numbers
+If the web elements are not siblings to each other, then we need to put the locator inside of parenthesis, THEN we pass index numbers
 
 
 	(//div[@class='container']/div)[1]

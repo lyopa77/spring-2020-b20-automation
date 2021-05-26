@@ -38,7 +38,7 @@ public class WindowHandlingPractices {
      */
 
     @Test
-    public void p5_handling_windows(){
+    public void p5_handling_windows() throws InterruptedException {
         driver.get("http://practice.cybertekschool.com/windows");
         String actualTitle = driver.getTitle();
         System.out.println("actualTitle = " + actualTitle);
@@ -47,6 +47,7 @@ public class WindowHandlingPractices {
 
         WebElement clickHereLink = driver.findElement(By.linkText("Click Here"));
         clickHereLink.click();
+        Thread.sleep(2000);
 
         String titleAfterClick = driver.getTitle();
         System.out.println("titleAfterClick = " + titleAfterClick);
@@ -83,16 +84,18 @@ public class WindowHandlingPractices {
     }
 
     @Test
-    public void p6_handling_more_than_two_windows(){
+    public void p6_handling_more_than_two_windows() throws InterruptedException {
 
         driver.get("https://amazon.com");
 
         //THIS LINE IS BASICALLY : We are downcasting our driver type to JavaScriptExecutor
         // THe only thing this line is doing is USING JS EXECUTOR -> opening new tabs with given links
         ((JavascriptExecutor) driver).executeScript("window.open('http://google.com','_blank');");
+        Thread.sleep(2000);
         ((JavascriptExecutor) driver).executeScript("window.open('http://etsy.com','_blank');");
+        Thread.sleep(2000);
         ((JavascriptExecutor) driver).executeScript("window.open('http://facebook.com','_blank');");
-
+        Thread.sleep(2000);
         Set<String> windowHandles = driver.getWindowHandles();
         //AMAZON
         //FACEBOOK
@@ -104,13 +107,15 @@ public class WindowHandlingPractices {
             driver.switchTo().window(each);
             System.out.println("Current page title: " + driver.getTitle());
 
-            if (driver.getCurrentUrl().contains("etsy")){
-                Assert.assertTrue(driver.getTitle().contains("Etsy"));
+            if (driver.getCurrentUrl().contains("Google")){
+                Assert.assertTrue(driver.getTitle().contains("Google"));
+                System.out.println("last title "+ driver.getTitle());
                 break;
             }
 
-        }
 
+        }
+driver.quit();
 
 
 
